@@ -4,15 +4,15 @@
     <!-- Monetag SDK (Critical for ads) -->
     <script
       src="//libtl.com/sdk.js"
-      data-zone="10600930"
-      data-sdk="show_10600930"
+      data-zone="10266375"
+      data-sdk="show_10266375"
     ></script>
     <meta charset="UTF-8" />
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"
     />
-    <title>D-TECH | Premium Mini App</title>
+    <title>Crunchyroll Premium Account Bot</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -28,26 +28,26 @@
       }
 
       :root {
-        --bg-deep: #020617;
-        --bg-surface: #0f172a;
-        --bg-card: rgba(21, 31, 56, 0.75);
-        --bg-card-solid: #111827;
-        --border-glow: rgba(212, 175, 55, 0.25);
-        --accent-gold: #d4af37;
-        --accent-gold-dark: #b8860b;
+        --bg-deep: #0f0a05;
+        --bg-surface: #2b1302;
+        --bg-card: rgba(43, 19, 2, 0.75);
+        --bg-card-solid: #3d1b02;
+        --border-glow: rgba(244, 117, 33, 0.25);
+        --accent-orange: #f47521; /* Crunchyroll Orange */
+        --accent-orange-dark: #cc5e15;
         --accent-green: #22c55e;
         --accent-red: #ef4444;
         --text-primary: #f1f5f9;
-        --text-secondary: #94a3b8;
+        --text-secondary: #ffb885;
         --shadow-sm: 0 8px 20px rgba(0, 0, 0, 0.4);
-        --shadow-gold: 0 8px 20px rgba(212, 175, 55, 0.2);
+        --shadow-orange: 0 8px 20px rgba(244, 117, 33, 0.2);
         --radius-xl: 24px;
         --radius-lg: 18px;
         --radius-md: 14px;
       }
 
       body {
-        background: radial-gradient(circle at 10% 20%, #0a0f2a, #020617);
+        background: radial-gradient(circle at 10% 20%, #1e0d01, #0f0a05);
         font-family: "Inter", sans-serif;
         color: var(--text-primary);
         padding: 20px 16px 40px;
@@ -65,10 +65,10 @@
         justify-content: space-between;
         align-items: center;
         padding: 12px 18px;
-        background: rgba(15, 23, 42, 0.6);
+        background: rgba(43, 19, 2, 0.6);
         backdrop-filter: blur(12px);
         border-radius: 60px;
-        border: 1px solid rgba(212, 175, 55, 0.2);
+        border: 1px solid rgba(244, 117, 33, 0.2);
         margin-bottom: 24px;
         box-shadow: var(--shadow-sm);
       }
@@ -84,116 +84,46 @@
       #username-display {
         font-size: 0.9rem;
         font-weight: 700;
-        background: linear-gradient(135deg, #fff, #d4af37);
+        background: linear-gradient(135deg, #fff, var(--accent-orange));
         background-clip: text;
         -webkit-background-clip: text;
         color: transparent;
       }
-      .balance-badge {
-        background: rgba(0, 0, 0, 0.5);
-        backdrop-filter: blur(4px);
-        padding: 6px 16px;
-        border-radius: 40px;
-        font-weight: 800;
-        font-size: 1.1rem;
-        border: 1px solid var(--accent-gold);
-        color: var(--accent-gold);
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-      }
 
-      /* Pending Rewards Card (TOP PRIORITY) */
-      .pending-hero {
+      /* Hero Card */
+      .hero-card {
         width: 100%;
         max-width: 500px;
-        background: linear-gradient(145deg, #0f172a, #0a0f1f);
+        background: linear-gradient(145deg, #2b1302, #1e0d01);
         border-radius: var(--radius-xl);
         padding: 20px 18px;
         margin-bottom: 24px;
-        border: 1px solid rgba(212, 175, 55, 0.3);
-        box-shadow: var(--shadow-gold);
-        transition: all 0.2s;
+        border: 1px solid rgba(244, 117, 33, 0.3);
+        box-shadow: var(--shadow-orange);
+        text-align: center;
       }
-      .pending-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: baseline;
-        margin-bottom: 12px;
-        flex-wrap: wrap;
+      .hero-card h3 {
+        font-size: 1.4rem;
+        font-weight: 800;
+        color: var(--accent-orange);
+        margin-bottom: 10px;
       }
-      .pending-header h3 {
+      .progress-display {
         font-size: 1.2rem;
-        font-weight: 700;
-        letter-spacing: -0.2px;
-        background: linear-gradient(120deg, #ffffff, #d4af37);
-        background-clip: text;
-        -webkit-background-clip: text;
-        color: transparent;
+        font-weight: bold;
+        margin: 15px 0;
       }
-      .unclaimed-badge {
-        background: rgba(212, 175, 55, 0.15);
-        padding: 6px 12px;
-        border-radius: 40px;
-        font-weight: 700;
-        font-size: 0.8rem;
-        color: var(--accent-gold);
-        border: 0.5px solid var(--accent-gold);
-      }
-      .claim-action {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 16px;
-        margin: 20px 0 14px;
-        flex-wrap: wrap;
-      }
-      .btn-claim {
-        background: linear-gradient(95deg, #22c55e, #16a34a);
-        border: none;
-        padding: 12px 24px;
-        border-radius: 48px;
-        font-weight: 800;
-        font-size: 1rem;
-        color: white;
-        cursor: pointer;
-        transition: transform 0.15s, box-shadow 0.2s;
-        flex: 1;
-        box-shadow: 0 6px 14px rgba(34, 197, 94, 0.25);
-      }
-      .btn-claim:active {
-        transform: scale(0.97);
-      }
-      .btn-claim:disabled {
-        opacity: 0.6;
-        transform: none;
-        cursor: not-allowed;
-      }
-      .auto-claim-timer {
-        background: rgba(255, 255, 255, 0.05);
-        padding: 10px 16px;
-        border-radius: 48px;
-        font-size: 0.8rem;
-        font-weight: 500;
-        font-family: monospace;
-        color: var(--text-secondary);
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-      }
-      .countdown-number {
-        color: var(--accent-gold);
-        font-weight: 800;
+      .progress-highlight {
+        color: var(--accent-orange);
+        font-size: 1.5rem;
       }
       .info-hint {
-        font-size: 0.7rem;
+        font-size: 0.8rem;
         color: var(--text-secondary);
         margin-top: 12px;
-        border-top: 1px dashed rgba(212, 175, 55, 0.2);
-        padding-top: 10px;
-        display: flex;
-        justify-content: space-between;
       }
 
-      /* Cards grid / tasks */
+      /* Tasks Grid */
       .section-label {
         font-size: 0.85rem;
         text-transform: uppercase;
@@ -239,14 +169,14 @@
         margin-bottom: 14px;
       }
       .btn-large {
-        background: linear-gradient(135deg, var(--accent-gold), #9c7a2b);
+        background: linear-gradient(135deg, var(--accent-orange), var(--accent-orange-dark));
         border: none;
         width: 100%;
-        padding: 12px;
+        padding: 14px;
         border-radius: 40px;
         font-weight: 800;
-        font-size: 0.9rem;
-        color: #010101;
+        font-size: 1rem;
+        color: #fff;
         cursor: pointer;
         transition: all 0.2s;
         text-transform: uppercase;
@@ -255,130 +185,65 @@
       .btn-secondary {
         background: rgba(255, 255, 255, 0.08);
         color: white;
-        border: 1px solid rgba(255, 215, 0, 0.3);
-      }
-      .miner-card {
-        background: linear-gradient(145deg, #0c1a2b, #07121f);
-        border-left: 3px solid var(--accent-green);
-      }
-      .miner-timer {
-        font-family: monospace;
-        font-size: 0.75rem;
-        margin-top: 8px;
+        border: 1px solid rgba(244, 117, 33, 0.3);
       }
 
-      /* Withdraw section */
-      .withdraw-section {
-        width: 100%;
-        max-width: 500px;
-        background: rgba(0, 0, 0, 0.4);
-        border-radius: var(--radius-lg);
-        padding: 20px;
-        margin: 16px 0;
-        border: 1px solid rgba(212, 175, 55, 0.2);
-      }
-      .withdraw-section h3 {
-        text-align: center;
-        color: var(--accent-gold);
-        font-size: 1.2rem;
-        margin-bottom: 8px;
-      }
-      .withdraw-options {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
-        gap: 10px;
-        margin: 18px 0;
-      }
-      .withdraw-btn {
-        background: #0f172a;
-        border: 1px solid rgba(212, 175, 55, 0.5);
-        padding: 10px 5px;
-        border-radius: 20px;
-        font-weight: 800;
-        font-size: 1rem;
-        color: var(--accent-gold);
-        cursor: pointer;
-        transition: all 0.2s;
-        display: flex;
-        flex-direction: column;
-      }
-      .withdraw-btn span {
-        font-size: 0.65rem;
-        font-weight: 400;
-        color: var(--text-secondary);
-      }
-      .voucher-display {
-        background: #07121f;
-        border-radius: 20px;
-        padding: 14px;
-        text-align: center;
-        margin-top: 15px;
+      /* Account Display Modal */
+      #account-modal {
         display: none;
-        border: 1px solid var(--accent-gold);
+        position: fixed;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: rgba(0,0,0,0.8);
+        z-index: 100;
+        justify-content: center;
+        align-items: center;
+        backdrop-filter: blur(5px);
       }
-      .voucher-display.active {
-        display: block;
-        animation: fadeUp 0.3s ease;
+      .modal-content {
+        background: #1e0d01;
+        padding: 30px;
+        border-radius: 20px;
+        border: 2px solid var(--accent-orange);
+        text-align: center;
+        max-width: 90%;
+        width: 400px;
       }
-      @keyframes fadeUp {
-        from {
-          opacity: 0;
-          transform: translateY(10px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
+      .modal-content h2 {
+        color: var(--accent-orange);
+        margin-bottom: 15px;
       }
-      .voucher-code {
+      .account-text {
+        background: #000;
+        padding: 15px;
+        border-radius: 10px;
         font-family: monospace;
-        font-size: 1.3rem;
-        background: black;
-        padding: 8px;
-        border-radius: 12px;
-        margin: 8px 0;
-        letter-spacing: 1px;
-        color: #22c55e;
+        font-size: 1.1rem;
+        word-break: break-all;
+        margin-bottom: 15px;
+        color: #fff;
       }
       .copy-btn {
-        background: var(--accent-gold);
+        background: var(--accent-green);
         border: none;
-        padding: 6px 14px;
+        padding: 12px 24px;
         border-radius: 30px;
         font-weight: bold;
+        color: white;
+        cursor: pointer;
+        font-size: 1rem;
+        margin-bottom: 10px;
+        width: 100%;
+      }
+      .close-btn {
+        background: transparent;
+        border: 1px solid var(--text-secondary);
+        color: var(--text-secondary);
+        padding: 10px 24px;
+        border-radius: 30px;
+        cursor: pointer;
+        width: 100%;
       }
 
-      .apps-link-btn {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 6px;
-        background: rgba(59, 130, 246, 0.15);
-        margin-top: 16px;
-        padding: 10px;
-        border-radius: 40px;
-        text-decoration: none;
-        color: #60a5fa;
-        font-weight: 600;
-      }
-      #pending-container {
-        width: 100%;
-        max-width: 500px;
-        background: rgba(0, 0, 0, 0.3);
-        border-radius: 20px;
-        padding: 12px;
-        margin-top: 8px;
-      }
-      .pending-item {
-        background: #0f172a;
-        border-left: 3px solid var(--accent-gold);
-        padding: 8px 12px;
-        border-radius: 12px;
-        margin-bottom: 8px;
-        display: flex;
-        justify-content: space-between;
-        font-size: 0.8rem;
-      }
       .logout-link {
         margin-top: 24px;
         font-size: 0.8rem;
@@ -401,14 +266,11 @@
         opacity: 0;
         transition: opacity 0.2s;
         pointer-events: none;
-        border-left: 4px solid var(--accent-gold);
+        border-left: 4px solid var(--accent-orange);
         box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
       }
       #toast.error {
         border-left-color: var(--accent-red);
-      }
-      button {
-        font-family: inherit;
       }
     </style>
   </head>
@@ -418,132 +280,56 @@
         <div class="user-greeting">WELCOME BACK</div>
         <div id="username-display">...</div>
       </div>
-      <div class="balance-badge">R <span id="balance-display">0.00</span></div>
     </header>
 
-    <!-- ========= PENDING REWARDS SECTION (MOVED TO TOP) ========= -->
-    <div class="pending-hero">
-      <div class="pending-header">
-        <h3>⚡ PENDING REWARDS</h3>
-        <div class="unclaimed-badge">
-          Unclaimed: <span id="unclaimed-count">0</span>
-        </div>
+    <div class="hero-card">
+      <h3>Crunchyroll Premium</h3>
+      <p style="color: var(--text-secondary); font-size: 0.9rem;">Watch ads to unlock a premium account!</p>
+
+      <div class="progress-display">
+        Ads Watched: <span id="ads-watched" class="progress-highlight">0</span> / <span id="ads-required" class="progress-highlight">2</span>
       </div>
-      <div class="claim-action">
-        <button id="claim-batch-btn" class="btn-claim" onclick="claimBatchedRewards()">
-          💰 CLAIM NOW
-        </button>
-        <div class="auto-claim-timer">
-          🔄 AUTO·CLAIM <span id="auto-claim-timer" class="countdown-number">--:--</span>
-        </div>
-      </div>
+
       <div class="info-hint">
-        <span>✅ Tasks stack instantly</span>
-        <span>⏱️ Cooldown: 5 min</span>
+        Resets daily. Cost doubles per account claimed today (max 8).
       </div>
     </div>
 
-    <div class="section-label">💰 EARN INSTANTLY</div>
+    <div class="section-label">WATCH ADS TO EARN</div>
     <div class="tasks-grid">
       <!-- Interstitial -->
       <div class="action-card">
-        <div class="card-title">🎬 HIGH YIELD VIDEO</div>
-        <div class="desc">Watch rewarded interstitial → maximum payout + pending batch</div>
-        <button class="btn-large" onclick="triggerAd('monetag_interstitial')">▶ WATCH VIDEO</button>
+        <div class="card-title">🎬 REWARDED INTERSTITIAL</div>
+        <div class="desc">Watch a full video ad to earn +1 ad progress.</div>
+        <button class="btn-large" onclick="triggerAd('interstitial')">▶ WATCH VIDEO</button>
       </div>
       <!-- Popup -->
       <div class="action-card">
-        <div class="card-title">📱 QUICK POPUP</div>
-        <div class="desc">Lightweight offer, instant credit to pending.</div>
-        <button class="btn-large btn-secondary" onclick="triggerAd('monetag_popup')">⚡ VIEW POPUP</button>
-      </div>
-      <!-- Auto Miner -->
-      <div class="action-card miner-card">
-        <div class="card-title">⛏️ AUTO-MINER ACTIVE</div>
-        <div class="desc">Background task every 5 min. Keep app open to earn.</div>
-        <div class="miner-timer" id="auto-timer">⏳ Next task in: --:--</div>
+        <div class="card-title">📱 REWARDED POPUP</div>
+        <div class="desc">View a quick popup offer to earn +1 ad progress.</div>
+        <button class="btn-large btn-secondary" onclick="triggerAd('popup')">⚡ VIEW POPUP</button>
       </div>
     </div>
-
-    <!-- Withdraw Section -->
-    <div class="withdraw-section">
-      <h3>🎫 WITHDRAW DTECH VOUCHER</h3>
-      <div class="desc" style="text-align: center; margin-bottom: 10px">Convert balance → secure voucher code</div>
-      <div class="withdraw-options">
-        <button class="withdraw-btn" onclick="requestVoucher(10)">10 R<span>VOUCHER</span></button>
-        <button class="withdraw-btn" onclick="requestVoucher(20)">20 R<span>VOUCHER</span></button>
-        <button class="withdraw-btn" onclick="requestVoucher(30)">30 R<span>VOUCHER</span></button>
-        <button class="withdraw-btn" onclick="requestVoucher(40)">40 R<span>VOUCHER</span></button>
-        <button class="withdraw-btn" onclick="requestVoucher(50)">50 R<span>VOUCHER</span></button>
-      </div>
-      <div id="voucher-display" class="voucher-display">
-        <div style="font-size: 0.7rem; opacity: 0.7">YOUR EXCLUSIVE CODE</div>
-        <div id="voucher-code" class="voucher-code"></div>
-        <button class="copy-btn" onclick="copyVoucher()">📋 COPY CODE</button>
-      </div>
-      <a href="apps.html" class="apps-link-btn">📲 DTECH REDEEM APPS →</a>
-    </div>
-
-    <!-- Pending verification list from backend -->
-    <div id="pending-container">
-      <h3 style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 8px">⏳ Pending Verification</h3>
-      <div id="pending-list"></div>
-    </div>
+    <p style="font-size: 0.7rem; color: #666; text-align: center; margin-top: 10px;">Background ads run automatically every 60s to support the bot (does not count towards progress).</p>
 
     <a href="#" onclick="logout()" class="logout-link">🔒 Log Out</a>
     <div id="toast">✨ Action completed</div>
 
+    <!-- Account Modal -->
+    <div id="account-modal">
+      <div class="modal-content">
+        <h2>🎉 Account Unlocked! 🎉</h2>
+        <p style="margin-bottom: 10px; color: var(--text-secondary); font-size:0.9rem;">Here is your Crunchyroll Premium Account. Please copy it now, it will not be shown again.</p>
+        <div id="account-text" class="account-text">user:pass</div>
+        <button class="copy-btn" onclick="copyAccount()">📋 COPY ACCOUNT</button>
+        <button class="close-btn" onclick="closeModal()">Close</button>
+      </div>
+    </div>
+
     <script>
-      // ---------- CONFIG ----------
-      const API_URL = "https://dark-mud-87fb.jonasmochebane.workers.dev";
+      const API_URL = "https://crimson-cherry-ee99.dtechxpreas.workers.dev";
       let currentUser = null;
       let isProcessing = false;
-      let nextTaskTime = Date.now() + 300000;      // 5 min auto-miner
-      let pendingBatch = [];                       // local unclaimed tasks
-      let nextAutoClaimTime = Date.now() + 1200000; // 20 min auto claim
-      let manualClaimCooldown = 0;
-
-      // ---------- HELPERS ----------
-      async function fetchProfile() {
-        if (!currentUser) return;
-        try {
-          const res = await fetch(`${API_URL}/profile?username=${currentUser.username}`);
-          if (!res.ok) {
-            if ([401, 403, 404].includes(res.status)) {
-              localStorage.removeItem("ad_user");
-              sessionStorage.removeItem("ad_user");
-              window.location.href = "index.html";
-            }
-            return;
-          }
-          const data = await res.json();
-          if (data.balance !== undefined) updateBalance(data.balance);
-          renderPending(data.pending_rewards || []);
-        } catch (e) { console.error(e); }
-      }
-
-      function updateBalance(amt) {
-        document.getElementById("balance-display").innerText = amt.toFixed(2);
-      }
-
-      function renderPending(list) {
-        const container = document.getElementById("pending-container");
-        const listEl = document.getElementById("pending-list");
-        listEl.innerHTML = "";
-        if (list && list.length > 0) {
-          container.style.display = "block";
-          const recent = list.slice().reverse().slice(0, 5);
-          recent.forEach(item => {
-            const div = document.createElement("div");
-            div.className = "pending-item";
-            const date = new Date(item.created_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-            div.innerHTML = `<span>📋 Task @ ${date}</span><span style="color:var(--accent-gold); font-weight:bold;">R ${parseFloat(item.amount).toFixed(2)}</span>`;
-            listEl.appendChild(div);
-          });
-        } else {
-          container.style.display = "none";
-        }
-      }
 
       function showToast(msg, isError = false) {
         const toast = document.getElementById("toast");
@@ -553,89 +339,47 @@
         setTimeout(() => (toast.style.opacity = "0"), 2800);
       }
 
-      // Batch & pending UI
-      function updatePendingUI() {
-        document.getElementById("unclaimed-count").innerText = pendingBatch.length;
-        savePendingBatch();
-      }
-      function savePendingBatch() {
-        localStorage.setItem("dtech_pending_batch", JSON.stringify(pendingBatch));
-      }
-      function loadPendingBatch() {
+      async function fetchProfile() {
+        if (!currentUser) return;
         try {
-          const stored = localStorage.getItem("dtech_pending_batch");
-          if (stored) pendingBatch = JSON.parse(stored);
-        } catch(e) {}
-        updatePendingUI();
-      }
-
-      // Claim batch (API call)
-      async function claimBatchedRewards() {
-        if (isProcessing) return;
-        if (pendingBatch.length === 0) {
-          showToast("No pending tasks to claim.", true);
-          return;
-        }
-        const now = Date.now();
-        if (now < manualClaimCooldown) {
-          const secLeft = Math.ceil((manualClaimCooldown - now) / 1000);
-          showToast(`Cooldown active (${secLeft}s)`, true);
-          return;
-        }
-        isProcessing = true;
-        showToast("Claiming rewards...");
-        try {
-          const typesToClaim = [...pendingBatch];
-          const res = await fetch(`${API_URL}/add-points`, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-              username: currentUser.username,
-              token: currentUser.token,
-              batch: typesToClaim
-            })
-          });
-          const data = await res.json();
-          if (res.ok) {
-            pendingBatch.splice(0, typesToClaim.length);
-            savePendingBatch();
-            updatePendingUI();
-            if (data.pending_verification) {
-              showToast("Rewards under verification (instant pending)");
-              setTimeout(fetchProfile, 800);
-            } else {
-              updateBalance(data.balance);
-              showToast(`+R ${data.earned || "??"} Earned!`);
+          const res = await fetch(`${API_URL}/profile?username=${currentUser.username}`);
+          if (!res.ok) {
+            if ([401, 403, 404].includes(res.status)) {
+              logout();
             }
-            manualClaimCooldown = Date.now() + 300000;
-            localStorage.setItem("dtech_claim_cooldown", manualClaimCooldown);
-          } else {
-            showToast(data.error || "Claim failed", true);
+            return;
           }
-        } catch(e) {
-          showToast("Network error while claiming", true);
-        }
-        isProcessing = false;
+          const data = await res.json();
+          updateProgress(data.ads_watched, data.ads_required);
+        } catch (e) { console.error(e); }
       }
 
-      // Ad triggers (use Monetag SDK)
+      function updateProgress(watched, required) {
+        document.getElementById("ads-watched").innerText = watched;
+        document.getElementById("ads-required").innerText = required;
+      }
+
+      // Ad triggers
       function triggerAd(type) {
         if (isProcessing) return;
-        if (typeof show_10600930 !== "function") {
+        if (typeof show_10266375 !== "function") {
           showToast("Ad SDK loading, please wait...", true);
           return;
         }
         isProcessing = true;
-        const ymid = `${currentUser.username}_${Date.now()}`;
-        showToast("⚠️ Tap blue 'Continue' on ad to get reward!", false);
+
         let adPromise;
-        if (type === "monetag_interstitial") {
-          adPromise = show_10600930({ ymid: ymid, requestVar: currentUser.username });
+        if (type === "interstitial") {
+          adPromise = show_10266375();
         } else {
-          adPromise = show_10600930({ type: "pop", ymid: ymid, requestVar: currentUser.username });
+          adPromise = show_10266375('pop');
         }
+
         adPromise
-          .then(() => claimReward(type))
+          .then(() => {
+            // Reward user
+            reportAdWatched();
+          })
           .catch((err) => {
             console.error(err);
             showToast("Ad closed early or error", true);
@@ -643,91 +387,28 @@
           });
       }
 
-      function claimReward(type) {
-        pendingBatch.push(type);
-        savePendingBatch();
-        updatePendingUI();
-        if (type !== "monetag_inapp") showToast("✅ Task added to pending batch!");
-        isProcessing = false;
-      }
-
-      // Auto Miner (every 5 min)
-      function startAutoTask() {
-        setInterval(() => {
-          const now = Date.now();
-          const diff = Math.max(0, Math.ceil((nextTaskTime - now) / 1000));
-          const mins = Math.floor(diff / 60);
-          const secs = diff % 60;
-          document.getElementById("auto-timer").innerHTML = `⏳ Next task in: ${mins}m ${secs}s`;
-          if (diff <= 0 && typeof show_10600930 === "function") {
-            triggerAutoAd();
-            nextTaskTime = Date.now() + 300000;
-          }
-        }, 1000);
-      }
-
-      function triggerAutoAd() {
-        if (!currentUser) return;
-        const ymid = `auto_${currentUser.username}_${Date.now()}`;
-        if (typeof show_10600930 === "function") {
-          show_10600930({
-            type: "inApp",
-            inAppSettings: { frequency: 2, capping: 0.1, interval: 30, timeout: 5, everyPage: false },
-            ymid: ymid,
-            requestVar: currentUser.username
-          }).then(() => claimReward("monetag_inapp")).catch(e => console.log("auto ad skip"));
-        }
-      }
-
-      // Claim timers & cooldown UI
-      function updateClaimTimers() {
-        const now = Date.now();
-        // Auto claim timer (every 20 min)
-        const diffAuto = Math.max(0, Math.ceil((nextAutoClaimTime - now) / 1000));
-        const minsAuto = Math.floor(diffAuto / 60);
-        const secsAuto = diffAuto % 60;
-        document.getElementById("auto-claim-timer").innerText = `${minsAuto}m ${secsAuto}s`;
-        if (diffAuto <= 0 && pendingBatch.length > 0) {
-          claimBatchedRewards();
-          nextAutoClaimTime = Date.now() + 1200000;
-        }
-
-        // Manual cooldown on claim button
-        const claimBtn = document.getElementById("claim-batch-btn");
-        if (now < manualClaimCooldown) {
-          const cdSec = Math.ceil((manualClaimCooldown - now) / 1000);
-          const minsC = Math.floor(cdSec / 60);
-          const secsC = cdSec % 60;
-          claimBtn.disabled = true;
-          claimBtn.innerText = `⏳ COOLDOWN (${minsC}:${secsC < 10 ? "0" : ""}${secsC})`;
-        } else {
-          claimBtn.disabled = false;
-          claimBtn.innerText = `💰 CLAIM NOW`;
-        }
-      }
-
-      // Voucher logic
-      async function requestVoucher(amount) {
-        if (isProcessing) return;
-        if (!confirm(`Generate ${amount}R DTECH voucher? Balance will be deducted.`)) return;
-        isProcessing = true;
-        showToast("Generating secure voucher...");
-        const displayDiv = document.getElementById("voucher-display");
-        displayDiv.classList.remove("active");
+      async function reportAdWatched() {
+        showToast("Ad watched successfully! Updating progress...");
         try {
-          const res = await fetch(`${API_URL}/generate-voucher`, {
+          const res = await fetch(`${API_URL}/watch-ad`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ username: currentUser.username, token: currentUser.token, amount })
+            body: JSON.stringify({
+              username: currentUser.username,
+              token: currentUser.token
+            })
           });
           const data = await res.json();
+
           if (res.ok) {
-            document.getElementById("voucher-code").innerText = data.voucher_code;
-            displayDiv.classList.add("active");
-            updateBalance(data.balance);
-            showToast("Voucher ready! Copy code.");
+            updateProgress(data.ads_watched, data.ads_required);
+            if (data.awarded_account) {
+              showAccountModal(data.awarded_account);
+            } else {
+              showToast("Progress updated!");
+            }
           } else {
-            showToast(data.error || "Insufficient balance or error", true);
+            showToast(data.error || "Failed to update progress", true);
           }
         } catch(e) {
           showToast("Network error", true);
@@ -735,19 +416,45 @@
         isProcessing = false;
       }
 
-      function copyVoucher() {
-        const code = document.getElementById("voucher-code").innerText;
-        if (!code) return;
-        navigator.clipboard.writeText(code).then(() => showToast("Voucher copied!")).catch(() => showToast("Manual copy", true));
+      // Background Ad (every 60 seconds)
+      function startBackgroundAds() {
+        setInterval(() => {
+          if (typeof show_10266375 === "function") {
+            show_10266375({
+              type: 'inApp',
+              inAppSettings: {
+                frequency: 1,
+                capping: 0.1,
+                interval: 30,
+                timeout: 5,
+                everyPage: false
+              }
+            }).catch(e => console.log("Background ad skipped or error"));
+          }
+        }, 60000);
       }
 
-      // Authentication & init
+      // Modal Logic
+      function showAccountModal(accountStr) {
+        document.getElementById("account-text").innerText = accountStr;
+        document.getElementById("account-modal").style.display = "flex";
+      }
+
+      function closeModal() {
+        document.getElementById("account-modal").style.display = "none";
+      }
+
+      function copyAccount() {
+        const text = document.getElementById("account-text").innerText;
+        navigator.clipboard.writeText(text).then(() => {
+          showToast("Account copied to clipboard!");
+        }).catch(() => {
+          showToast("Failed to copy. Please copy manually.", true);
+        });
+      }
+
+      // Authentication & Init
       async function init() {
-        loadPendingBatch();
-        try {
-          const storedCooldown = localStorage.getItem("dtech_claim_cooldown");
-          if (storedCooldown) manualClaimCooldown = parseInt(storedCooldown, 10);
-        } catch(e) {}
         let saved = sessionStorage.getItem("ad_user") || localStorage.getItem("ad_user");
         if (!saved) {
           if (window.Telegram && window.Telegram.WebApp) {
@@ -763,20 +470,36 @@
                 const data = await res.json();
                 if (res.ok && data.token) {
                   currentUser = {
-                    username: data.token.split("-")[0],
-                    balance: data.balance || 0,
-                    history: data.history || [],
-                    token: data.token,
-                    status: data.status
+                    username: data.username,
+                    token: data.token
                   };
                   localStorage.setItem("ad_user", JSON.stringify(currentUser));
                   finishInit();
                   return;
                 }
               } catch(e) { console.error(e); }
+            } else {
+                // Fallback for local testing if not in Telegram
+                try {
+                    const res = await fetch(`${API_URL}/telegram-auth`, {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({ tgUser: {id: Math.floor(Math.random()*10000)} })
+                    });
+                    const data = await res.json();
+                    if (res.ok && data.token) {
+                        currentUser = {
+                            username: data.username,
+                            token: data.token
+                        };
+                        localStorage.setItem("ad_user", JSON.stringify(currentUser));
+                        finishInit();
+                        return;
+                    }
+                } catch(e) { console.error(e); }
             }
           }
-          window.location.href = "index.html";
+          document.body.innerHTML = "<h2 style='text-align:center; margin-top:50px;'>Please open this app inside Telegram</h2>";
           return;
         }
         currentUser = JSON.parse(saved);
@@ -786,18 +509,13 @@
       function finishInit() {
         document.getElementById("username-display").innerText = currentUser.username;
         fetchProfile();
-        startAutoTask();
-        setInterval(updateClaimTimers, 1000);
-        setInterval(() => fetchProfile(), 25000);
-        updateClaimTimers();
+        startBackgroundAds();
       }
 
       function logout() {
         localStorage.removeItem("ad_user");
         sessionStorage.removeItem("ad_user");
-        localStorage.removeItem("dtech_pending_batch");
-        localStorage.removeItem("dtech_claim_cooldown");
-        window.location.href = "index.html";
+        window.location.reload();
       }
 
       window.addEventListener("DOMContentLoaded", init);
