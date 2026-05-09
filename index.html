@@ -370,9 +370,9 @@
 
         let adPromise;
         if (type === "interstitial") {
-          adPromise = show_10266375();
+          adPromise = show_10266375({ ymid: currentUser && currentUser.username ? currentUser.username : 'unknown' });
         } else {
-          adPromise = show_10266375('pop');
+          adPromise = show_10266375({ type: 'pop', ymid: currentUser && currentUser.username ? currentUser.username : 'unknown' });
         }
 
         adPromise
