@@ -476,8 +476,15 @@
                   localStorage.setItem("ad_user", JSON.stringify(currentUser));
                   finishInit();
                   return;
+                } else {
+                  document.body.innerHTML = `<h2 style='text-align:center; margin-top:50px; color: #ef4444;'>Authentication Failed</h2><p style='text-align:center; color: #ffb885;'>Server responded with: ${data.error || 'Unknown error'}</p>`;
+                  return;
                 }
-              } catch(e) { console.error(e); }
+              } catch(e) {
+                console.error(e);
+                document.body.innerHTML = "<h2 style='text-align:center; margin-top:50px; color: #ef4444;'>Network Error</h2><p style='text-align:center; color: #ffb885;'>Could not connect to the server.</p>";
+                return;
+              }
             } else {
                 // Fallback for local testing if not in Telegram
                 try {
@@ -495,10 +502,18 @@
                         localStorage.setItem("ad_user", JSON.stringify(currentUser));
                         finishInit();
                         return;
+                    } else {
+                        document.body.innerHTML = `<h2 style='text-align:center; margin-top:50px; color: #ef4444;'>Local Auth Failed</h2><p style='text-align:center; color: #ffb885;'>Server responded with error.</p>`;
+                        return;
                     }
-                } catch(e) { console.error(e); }
+                } catch(e) {
+                    console.error(e);
+                    document.body.innerHTML = "<h2 style='text-align:center; margin-top:50px; color: #ef4444;'>Network Error</h2><p style='text-align:center; color: #ffb885;'>Could not connect to the server during local testing.</p>";
+                    return;
+                }
             }
           }
+          // If neither Telegram WebApp is found nor handled by local fallback
           document.body.innerHTML = "<h2 style='text-align:center; margin-top:50px;'>Please open this app inside Telegram</h2>";
           return;
         }
