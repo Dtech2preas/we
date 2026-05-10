@@ -141,8 +141,8 @@
     </div>
 
     <h2>Add New Accounts</h2>
-    <p style="font-size: 0.9rem; color: #aaa;">Enter accounts (one per line, e.g. email:password)</p>
-    <textarea id="new-accounts" placeholder="user1@email.com:pass1&#10;user2@email.com:pass2"></textarea>
+    <p style="font-size: 0.9rem; color: #aaa;">Enter accounts (plain email:pass or D-TECH format)</p>
+    <textarea id="new-accounts" placeholder="user1@email.com:pass1&#10;user2@email.com:pass2&#10;or paste D-TECH format directly..."></textarea>
     <button onclick="addAccounts()">Add Accounts</button>
 
     <div class="fetched-list">
@@ -265,13 +265,46 @@
         return;
       }
 
-      const lines = text.split('\n').map(l => l.trim()).filter(l => l.length > 0);
+      const rawLines = text.split('\n').map(l => l.trim()).filter(l => l.length > 0);
+      const accounts = [];
+
+      for (const line of rawLines) {
+        if (line.startsWith('======') || line.startsWith('[ Powered by') || line === ')' || line === '(') {
+          continue;
+        }
+
+        if (line.includes('| Data:')) {
+          const parts = line.split('|');
+          const emailPass = parts[0].trim();
+
+          let dataContent = line.substring(line.indexOf('Data:') + 5).trim();
+          // Remove the DTECH signature to check what's left
+          dataContent = dataContent.split(/\(?powered by DTECH/i)[0].trim();
+
+          // Only keep if data content is not empty and doesn't contain the verification link message
+          if (dataContent !== '' && !dataContent.toLowerCase().includes('on the verification link')) {
+            if (emailPass.includes(':')) {
+              accounts.push(emailPass);
+            }
+          }
+        } else {
+          // Plain format fallback
+          if (line.includes(':') && !line.toLowerCase().includes('powered by')) {
+            accounts.push(line);
+          }
+        }
+      }
+
+      if (accounts.length === 0) {
+        showToast('No valid accounts found after filtering');
+        return;
+      }
 
       try {
         const res = await fetch(`${API_URL}/admin/add-accounts`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ admin_secret: secret, accounts: lines })
+          body: JSON.stringify({ admin_secret: secret, accounts: accounts })
         });
 
         if (res.ok) {
